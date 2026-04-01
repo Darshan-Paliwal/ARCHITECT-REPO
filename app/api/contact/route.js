@@ -1,7 +1,8 @@
-import { connectDB } from "@/lib/db";
-import Contact from "@/models/ContactSubmission";
+import { connectDB } from "../../../lib/db";
+import Contact from "../../../models/ContactSubmission";
 
 export async function POST(req) {
   await connectDB();
-  return Response.json(await Contact.create(await req.json()));
+  const data = await req.json();
+  return Response.json(await Contact.create(data));
 }
