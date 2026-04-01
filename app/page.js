@@ -1,11 +1,7 @@
-
-import { headers } from "next/headers";
+import { baseUrl } from "../lib/fetch";
 
 async function getData() {
-  const host = headers().get("host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-
-  const res = await fetch(`${protocol}://${host}/api/settings`, {
+  const res = await fetch(`${baseUrl()}/api/settings`, {
     cache: "no-store",
   });
 
@@ -21,4 +17,4 @@ export default async function Home() {
       <h1 className="text-4xl">{data.heroText}</h1>
     </div>
   );
-    }
+}
