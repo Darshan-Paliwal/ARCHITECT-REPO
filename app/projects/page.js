@@ -1,11 +1,7 @@
-
-import { headers } from "next/headers";
+import { baseUrl } from "../../lib/fetch";
 
 async function getProjects() {
-  const host = headers().get("host");
-  const protocol = process.env.NODE_ENV === "development" ? "http" : "https";
-
-  const res = await fetch(`${protocol}://${host}/api/projects`, {
+  const res = await fetch(`${baseUrl()}/api/projects`, {
     cache: "no-store",
   });
 
@@ -25,4 +21,4 @@ export default async function Projects() {
       ))}
     </div>
   );
-}
+        }
